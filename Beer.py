@@ -29,23 +29,19 @@ class Beer:  # Requirement: User-defined class.
             str(self.name) + str(self.brewer) + str(self.brewer_location) + str(self.rating) + str(self.style) + str(
                 self.input_date))
 
-        # TODO: Input data via CSV
 
-
+# TODO: Input data via CSV
 def import_data(file_path):
     with open(file_path) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
-        line_count = 0
+        csv_reader = csv.DictReader(csv_file, delimiter=',')
+        output_data = []
         for row in csv_reader:
-            if line_count == 0:
-                print(row)
-                line_count += 1
-            else:
-                print(f'\t{row[0]}  {row[1]}  {row[2]}.')
-                line_count += 1
-        print(f'Processed {line_count} lines.')
+            output_data.append(row)
 
-    # TODO: Export my data from the tracker via CSV
+        return output_data
+
+
+# TODO: Export my data from the tracker via CSV
 
 
 def export_data():
@@ -59,7 +55,7 @@ def top_beers(beer_list, beer_style=None, beer_name=None):
             if beer_style == beer.style:  # check if beer is of the right type
                 beer_selection.append(beer)
         top_beer_list = sorted(beer_selection, key=lambda score: beer.rating)
-        return top_beer_list
+        print(top_beer_list)
 
     elif beer_name is not None:  # TODO: search for beers by name
         beer_selection = []
@@ -67,8 +63,8 @@ def top_beers(beer_list, beer_style=None, beer_name=None):
             if beer_name in beer.name:  # check if beer is of the right type
                 beer_selection.append(beer)
         top_beer_list = sorted(beer_selection, key=lambda score: beer.rating)
-        return top_beer_list
+        print(top_beer_list)
 
     else:  # TODO: top beers by rating
         top_beer_list = sorted(beer_list, key=lambda score: beer.rating)
-        return top_beer_list
+        print(top_beer_list)

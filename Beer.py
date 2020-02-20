@@ -28,13 +28,23 @@ def export_data():
     print("Not implemented")
 
 
-def top_score(beer_list, beer_type=None, beer_name=None):
-    if beer_type is not None:  # TODO: top beers by type
-        print("not implemented")
-    if beer_name is not None:  # TODO: search for beers by name
-        print("not implemented")
-    else:  # TODO: top beers by rating
-        top_scoring_beer = beer_list[0]
+def top_beers(beer_list, beer_style=None, beer_name=None):
+    if beer_style is not None:  # TODO: top beers by type
+        beer_selection = []
         for beer in beer_list:
-            if beer.rating > top_scoring_beer.rating:
-                top_scoring_beer = beer
+            if beer_style == beer.style:  # check if beer is of the right type
+                beer_selection.append(beer)
+        top_beer_list = sorted(beer_selection, key=lambda score: beer.rating)
+        return top_beer_list
+
+    elif beer_name is not None:  # TODO: search for beers by name
+        beer_selection = []
+        for beer in beer_list:
+            if beer_name in beer.name:  # check if beer is of the right type
+                beer_selection.append(beer)
+        top_beer_list = sorted(beer_selection, key=lambda score: beer.rating)
+        return top_beer_list
+
+    else:  # TODO: top beers by rating
+        top_beer_list = sorted(beer_list, key=lambda score: beer.rating)
+        return top_beer_list

@@ -2,28 +2,52 @@
 # TODO: at least 1 private and 1 public method that take arguments, return values and are used by your program
 
 from datetime import date
+import csv
 
 
 class Beer:  # Requirement: User-defined class.
 
-    def __init__(self):
-        self.name = input("Input a beer name: ")
-        self.rating = input("Input your rating: ")
-        self.style = input("Input the beer style: ")
-        self.brewer = input("Input the name of the brewer: ")
-        self.brewer_location = input("Input the location of the brewer: ")
-        self.input_date = date.today()
+    def __init__(self, name=None, rating=None, style=None, brewer=None, brewer_location=None):
+        if name is not None or rating is not None or style is not None or \
+                brewer is not None or brewer_location is not None:
+            self.name = name
+            self.rating = rating
+            self.style = style
+            self.brewer = brewer
+            self.brewer_location = brewer_location
+            self.input_date = date.today()
+        else:
+            self.name = input("Input a beer name: ")
+            self.rating = input("Input your rating: ")
+            self.style = input("Input the beer style: ")
+            self.brewer = input("Input the name of the brewer: ")
+            self.brewer_location = input("Input the location of the brewer: ")
+            self.input_date = date.today()
 
     def __repr__(self):  # Requirement: implement repr() method
-        return repr(self.name + self.brewer + self.brewer_location + self.rating + self.style + str(self.input_date))
+        return repr(
+            str(self.name) + str(self.brewer) + str(self.brewer_location) + str(self.rating) + str(self.style) + str(
+                self.input_date))
+
+        # TODO: Input data via CSV
 
 
-# TODO: Input data via CSV
 def import_data(file_path):
-    print("Not implemented")
+    with open(file_path) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0
+        for row in csv_reader:
+            if line_count == 0:
+                print(row)
+                line_count += 1
+            else:
+                print(f'\t{row[0]}  {row[1]}  {row[2]}.')
+                line_count += 1
+        print(f'Processed {line_count} lines.')
+
+    # TODO: Export my data from the tracker via CSV
 
 
-# TODO: Export my data from the tracker via CSV
 def export_data():
     print("Not implemented")
 

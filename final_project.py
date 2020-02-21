@@ -2,15 +2,12 @@
 Command line beer tracker
 
 ## Key Project requirements
-- Container type (list, tuple, set, or dictionary)
-- Iteration type (for, while)
-- Conditional (if)
-- Try blocks
+TODO: Try blocks
 TODO: Provide unit tests that prove that your class methods work;
 TODO: Evaluate results using assert statements.
+TODO: at least 1 private and 1 public method that take arguments, return values and are used by your program
 """
 import Beer
-beer_list = []
 escape = "E"
 user_input = ""
 
@@ -29,11 +26,7 @@ while user_input != escape:
 
     # input from a file
     elif user_input == '2':
-        input_data = Beer.import_data('test_data')
-        for row in input_data:
-            new_beer = Beer.Beer(row["name"], row["rating"], row["style"],
-                                 row["brewer"], row["location"])
-            beer_list.append(new_beer)
+
 
     # top beers in a selected style
     elif user_input == '3':

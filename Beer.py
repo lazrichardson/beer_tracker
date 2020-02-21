@@ -22,7 +22,7 @@ class Beer:  # Requirement: User-defined class.
             self.brewer_location = brewer_location
             self.input_date = date.today()
 
-        self.beer_dict = ""
+        self.__beer_dict = ""
 
     def __repr__(self):  # Requirement: implement repr() method
         return repr(
@@ -38,11 +38,11 @@ class Beer:  # Requirement: User-defined class.
             "brewer": self.brewer,
             "brewer_location": self.brewer_location,
             "input_date": self.input_date}
-        self.beer_dict = beer_dict
+        self.__beer_dict = beer_dict
 
     def get_beer_dict(self):
         self.__set_beer_dict()
-        return self.beer_dict
+        return self.__beer_dict
 
     def get_beer_name(self):
         return self.name

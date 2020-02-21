@@ -18,6 +18,10 @@ class BeerList:
                                  + str(beer.input_date))
         return repr(output_string)
 
+    def __sort_by_rating(self):
+        self.beer_list = sorted(self.beer_list, key=attrgetter('rating'),
+                                reverse=True)
+
     def add_beer(self):
         new_beer = Beer.Beer()
         self.beer_list.append(new_beer)
@@ -44,6 +48,7 @@ class BeerList:
     # TODO: Export my data from the tracker via CSV
     def export_data(self):
         filename = 'beer_list_export.csv'
+        self.__sort_by_rating()
         with open(filename, 'a', newline='') as csv_file:
             fieldnames = [
                 "name",
@@ -75,8 +80,7 @@ class BeerList:
         if len(beer_selection) < 1:
             print("No results found....")
         else:
-            beer_selection = sorted(beer_selection, key=attrgetter('rating'),
-                                    reverse=True)
+            self.__sort_by_rating()
             if style_or_name == "style":
                 print("Here are the top {} style beers...".format(
                     beer_attribute.title()))
@@ -96,8 +100,7 @@ class BeerList:
     # TODO: top beers by rating
     def top_beers_by_rating(self):
         # sort the beers
-        self.beer_list = sorted(self.beer_list, key=attrgetter('rating'),
-                                reverse=True)
+        self.__sort_by_rating()
         print("Here are all the beers sorted by rating...")
 
         # print out the table

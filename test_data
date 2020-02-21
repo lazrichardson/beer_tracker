@@ -3,5 +3,11 @@ milk stout,5,stout,left hand,colorado
 whitbier,4,white beer,weihenstephaner,munich
 Peanut butter bite,5,stout,trillium,boston
 junos,3,sour,trillium,boston
-daily serving,4,sour,trillium,boston
+daily serving,1,sour,trillium,boston
 olmsted,4,ipa,trillium,boston
+test_ipa1,1,beer,luther brew,boston
+test_ipa2,2,beer,luther brew,boston
+test_ipa3,3,beer,luther brew,boston
+test_ipa4,4,beer,luther brew,boston
+test_ipa5,5,beer,luther brew,boston
+test_ipa6,6,beer,luther brew,boston

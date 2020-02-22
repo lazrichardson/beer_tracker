@@ -45,7 +45,6 @@ class BeerList:
         except FileNotFoundError:
             print("File not found...try again!")
 
-    # TODO: Export my data from the tracker via CSV
     def export_data(self):
         filename = 'beer_list_export.csv'
         self.__sort_by_rating()
@@ -97,7 +96,6 @@ class BeerList:
                 print("{:20} | {:^7} ".format(beer.name.strip().title(),
                                               beer.rating))
 
-    # TODO: top beers by rating
     def top_beers_by_rating(self):
         # sort the beers
         self.__sort_by_rating()

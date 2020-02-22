@@ -2,7 +2,6 @@
 Command line beer tracker
 
 ## Key Project requirements
-TODO: Try blocks
 TODO: Provide unit tests that prove that your class methods work;
 TODO: Evaluate results using assert statements.
 TODO: at least 1 private and 1 public method that take arguments, return values and are used by your program

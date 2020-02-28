@@ -23,7 +23,30 @@ class BeerList:
                                 reverse=True)
 
     def add_beer(self):
-        new_beer = Beer.Beer()
+
+        name = input("Input a beer name: ")
+
+        input_ok = False
+
+        rating = 0
+        while input_ok is False:
+            rating = input("Input your rating (1 to 5): ")
+
+            try:
+                rating = int(rating)
+                if rating < 1 or rating > 5:
+                    print("Not in the right range. Try again")
+                else:
+                    input_ok = True
+
+            except ValueError:
+                print("That's not an integer. Try again.")
+
+        style = input("Input the beer style: ")
+        brewer = input("Input the name of the brewer: ")
+        brewer_location = input("Input the location of the brewer: ")
+
+        new_beer = Beer.Beer(name, rating, style, brewer, brewer_location)
         self.beer_list.append(new_beer)
 
     def import_data(self, file_path):
@@ -46,22 +69,30 @@ class BeerList:
             print("File not found...try again!")
 
     def export_data(self):
-        filename = 'beer_list_export.csv'
-        self.__sort_by_rating()
-        with open(filename, 'a', newline='') as csv_file:
-            fieldnames = [
-                "name",
-                "rating",
-                "style",
-                "brewer",
-                "brewer_location",
-                "input_date"]
-            writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-            writer.writeheader()
-            for beer in self.beer_list:
-                writer.writerow(beer.get_beer_dict())
-        print("Exported {:d} rows to file {}".format(len(self.beer_list),
-                                                     filename))
+        if len(self.beer_list) < 1:
+            print("No values to export...")
+        else:
+            filename = 'beer_list_export.csv'
+            self.__sort_by_rating()
+            with open(filename, 'a', newline='') as csv_file:
+                fieldnames = [
+                    "name",
+                    "rating",
+                    "style",
+                    "brewer",
+                    "brewer_location",
+                    "input_date"]
+                writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+                writer.writeheader()
+                for beer in self.beer_list:
+                    writer.writerow(beer.get_beer_dict())
+            if len(self.beer_list) > 0:
+                print(
+                    "Exported {:d} rows to file {}".format(len(self.beer_list),
+                                                           filename))
+            else:
+                print("Exported {:d} row to file {}".format(len(self.beer_list),
+                                                            filename))
 
     def top_beers(self, beer_attribute, style_or_name):
         beer_selection = []
@@ -94,15 +125,19 @@ class BeerList:
             print("-" * 30)
             for beer in beer_selection:
                 print("{:20} | {:^7} ".format(beer.name.strip().title(),
-                                              beer.rating))
+                                              beer.star_rating))
 
     def top_beers_by_rating(self):
         # sort the beers
-        self.__sort_by_rating()
-        print("Here are all the beers sorted by rating...")
+        if len(self.beer_list) < 1:
+            print("No beers found :(")
+        else:
+            self.__sort_by_rating()
+            print("Here are all the beers sorted by rating...")
 
-        # print out the table
-        print("{:^21}|{:^7}".format("Name", "Rating"))
-        print("-" * 30)
-        for beer in self.beer_list:
-            print("{:20} | {:^7} ".format(beer.name.title(), beer.rating))
+            # print out the table
+            print("{:^21}|{:^7}".format("Name", "Rating"))
+            print("-" * 30)
+            for beer in self.beer_list:
+                print("{:20} | {:<7} ".format(beer.name.title(),
+                                              beer.star_rating))

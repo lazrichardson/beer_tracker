@@ -1,7 +1,9 @@
 """
+Luther Richardson
+CS521 - February 29th, 2020
+Final Project
 Command line beer tracker
 
-## Key Project requirements
 """
 import BeerList
 

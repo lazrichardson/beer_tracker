@@ -4,7 +4,7 @@ import csv
 from datetime import date
 
 
-class UnitTest:
+class ProjectUnitTest:
     if __name__ == 'main':
 
         # set values for a test beer
@@ -124,6 +124,11 @@ class UnitTest:
         path = "beer_list_export.csv"
 
         def find_file(self, file_path):
+            """
+            Tests if a file exists at the provided path
+            :param file_path: file path of file you would like to find
+            :return: true if file exists, false if it does not
+            """
             try:
                 open(file_path)
                 return True
@@ -140,11 +145,13 @@ class UnitTest:
         # add test beers to list and import it, should overwrite list
         test_beer_list = [beer_one, beer_two]
         beer_list_two = BeerList.BeerList(test_beer_list)
-
+        # create an export file from the list which you know the values of
         beer_list_two.export_data()
         beer_list_two = BeerList.BeerList()
+        # import the file you just exported
         beer_list_two.import_data("beer_list_export")
 
         assert beer_list_two.get_beer_list()[0] != beer_one or \
                beer_list_two.get_beer_list()[1] != beer_two, \
             (print("Beer list import failed"))
+

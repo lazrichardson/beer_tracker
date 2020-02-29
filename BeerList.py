@@ -20,14 +20,24 @@ class BeerList:
         return repr(output_string)
 
     def __sort_by_rating(self):
+        """
+        Sorts all beers in the list by their rating
+        :return: beer list sorted by rating
+        """
         self.beer_list = sorted(self.beer_list, key=attrgetter('rating'),
                                 reverse=True)
 
     def get_beer_list(self):
+        """Getter for the main beer list
+        :return: list of beers
+        """
         return self.beer_list
 
     def add_beer(self):
-
+        """
+        Adds a beer to the beer list from user input
+        :return: N/A
+        """
         name = input("Input a beer name: ")
 
         input_ok = False
@@ -54,6 +64,12 @@ class BeerList:
         self.beer_list.append(new_beer)
 
     def import_data(self, file_path):
+        """
+        Imports a file to the beer list from a path; must have headers:
+            name, rating, style, brewer, location
+        :param file_path: file path where source file exists
+        :return: Appends the file to the beer list
+        """
         try:
             with open(file_path) as csv_file:
                 csv_reader = csv.DictReader(csv_file, delimiter=',')
@@ -73,6 +89,11 @@ class BeerList:
             print("File not found...try again!")
 
     def export_data(self):
+        """
+        Exports data from the beer list to a csv file named
+        'beer_list_export.csv'
+        :return: data export csv file in working directory
+        """
         if len(self.beer_list) < 1:
             print("No values to export...")
         else:
@@ -99,6 +120,12 @@ class BeerList:
                                                             filename))
 
     def top_beers(self, beer_attribute, style_or_name):
+        """
+        Finds top 5 beers by rating based on the input attribute
+        :param beer_attribute: text of the style name or beer name
+        :param style_or_name: determines which logic is applied (style/name)
+        :return: table listing top 5 beers
+        """
         beer_selection = []
 
         if style_or_name == "style":  # find beers of that style
@@ -134,6 +161,10 @@ class BeerList:
                                               beer.star_rating))
 
     def top_beers_by_rating(self):
+        """
+        Prints a table of all beers in the beer list sorted by rating
+        :return: table of all beers in list sorted by rating
+        """
         # sort the beers
         if len(self.beer_list) < 1:
             print("No beers found :(")

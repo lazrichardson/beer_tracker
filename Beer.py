@@ -1,6 +1,4 @@
 from datetime import date
-from operator import attrgetter
-import csv
 
 
 class Beer:  # Requirement: User-defined class.
@@ -18,7 +16,8 @@ class Beer:  # Requirement: User-defined class.
 
     def __repr__(self):  # Requirement: implement repr() method
         return repr(
-            str(self.name) + str(self.brewer) + str(self.brewer_location) + str(
+            str(self.name) + str(self.brewer) + str(
+                self.brewer_location) + str(
                 self.rating) + str(self.style) + str(
                 self.input_date))
 
@@ -32,8 +31,28 @@ class Beer:  # Requirement: User-defined class.
             "input_date": self.input_date}
         self.__beer_dict = beer_dict
 
+
+
     def __star_printer(self):
         return "🌟" * self.rating
+
+    def get_name(self):
+        return self.name
+
+    def get_rating(self):
+        return self.rating
+
+    def get_style(self):
+        return self.style
+
+    def get_brewer(self):
+        return self.brewer
+
+    def get_brewer_location(self):
+        return self.brewer_location
+
+    def get_input_date(self):
+        return self.input_date
 
     def get_beer_dict(self):
         self.__set_beer_dict()

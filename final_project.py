@@ -8,8 +8,8 @@ TODO: at least 1 private and 1 public method that take arguments, return values
 """
 import BeerList
 
-escape = "E"
-user_input = ""
+escape = "E"  # escape character for user input
+user_input = ""  # initialize placeholder for user input
 beer_list = BeerList.BeerList()  # initialize a beer list
 
 print(
@@ -17,7 +17,7 @@ print(
       o©ºº©oo©oº°©           
      /      º°©   \          
      |___________ |____      
-     |     BU     |___ )     
+     |     B U     |___ )     
      |    CS521   |  | |     
      |   B E E R  |  | |         
      |   TRACKER  |  | |     

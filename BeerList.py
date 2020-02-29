@@ -4,8 +4,9 @@ from operator import attrgetter
 
 
 class BeerList:
+
     def __init__(self, beer_list=None):
-        if beer_list is None:
+        if beer_list is not None:
             self.beer_list = []
         else:
             self.beer_list = beer_list
@@ -21,6 +22,9 @@ class BeerList:
     def __sort_by_rating(self):
         self.beer_list = sorted(self.beer_list, key=attrgetter('rating'),
                                 reverse=True)
+
+    def get_beer_list(self):
+        return self.beer_list
 
     def add_beer(self):
 
@@ -99,12 +103,13 @@ class BeerList:
 
         if style_or_name == "style":  # find beers of that style
             for beer in self.beer_list:  # check if beer is of the right style
-                if beer_attribute.upper() == beer.style.upper():  # case
+                if beer_attribute.upper() == beer.get_beer_name().upper():  # case
                     # insensitive
                     beer_selection.append(beer)
         else:
             for beer in self.beer_list:  # find beers matching the name
-                if beer_attribute.upper() in beer.name.upper():  # case insensitive
+                if beer_attribute.upper() in beer.get_beer_name().upper():  # case
+                    # insensitive
                     beer_selection.append(beer)
         # if nothing added, show error
         if len(beer_selection) < 1:
@@ -124,7 +129,8 @@ class BeerList:
             print("{:^21}|{:^7}".format("Name", "Rating"))
             print("-" * 30)
             for beer in beer_selection:
-                print("{:20} | {:^7} ".format(beer.name.strip().title(),
+                print("{:20} | {:^7} ".format(beer.get_beer_name()
+                                              .strip().title(),
                                               beer.star_rating))
 
     def top_beers_by_rating(self):
@@ -139,5 +145,5 @@ class BeerList:
             print("{:^21}|{:^7}".format("Name", "Rating"))
             print("-" * 30)
             for beer in self.beer_list:
-                print("{:20} | {:<7} ".format(beer.name.title(),
+                print("{:20} | {:<7} ".format(beer.get_beer_name().title(),
                                               beer.star_rating))

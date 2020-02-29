@@ -1,10 +1,13 @@
 import Beer
 import BeerList
+import csv
 from datetime import date
 
 
 class UnitTest:
     if __name__ == 'main':
+
+        # set values for a test beer
         name = "Test beer"
         rating = 5
         style = "Gose"
@@ -13,6 +16,7 @@ class UnitTest:
         input_date = date.today()
         star_rating = ""
         beer_dict = ""
+
         # Beer class test
         # instantiate a test beer
         beer = Beer.Beer(name=name, rating=rating, style=style,
@@ -113,3 +117,34 @@ class UnitTest:
                beer_list.get_beer_list()[1] != beer_one, (print("Error "
                                                                 "sorting "
                                                                 "Beer List"))
+
+        # test data import and export
+        beer_list.export_data()
+
+        path = "beer_list_export.csv"
+
+        def find_file(self, file_path):
+            try:
+                open(file_path)
+                return True
+            except FileNotFoundError:
+                return False
+
+        # file should be exported
+        assert find_file(path) is False, (print("File export error"))
+
+        # reset beer list, file should not export
+        beer_list = BeerList.BeerList()
+        assert find_file(path) is True, (print("File export error"))
+
+        # add test beers to list and import it, should overwrite list
+        test_beer_list = [beer_one, beer_two]
+        beer_list_two = BeerList.BeerList(test_beer_list)
+
+        beer_list_two.export_data()
+        beer_list_two = BeerList.BeerList()
+        beer_list_two.import_data("beer_list_export")
+
+        assert beer_list_two.get_beer_list()[0] != beer_one or \
+               beer_list_two.get_beer_list()[1] != beer_two, \
+            (print("Beer list import failed"))

@@ -6,7 +6,7 @@ from operator import attrgetter
 class BeerList:
 
     def __init__(self, beer_list=None):
-        if beer_list is not None:
+        if beer_list is None:
             self.beer_list = []
         else:
             self.beer_list = beer_list

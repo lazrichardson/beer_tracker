@@ -121,6 +121,9 @@ class BeerList:
                 writer.writeheader()
                 for beer in self.beer_list:
                     writer.writerow(beer.get_beer_dict())
+            # close the file
+            csv_file.close()
+
             if len(self.beer_list) > 0:
                 print(
                     "Exported {:d} rows to file {}".format(len(self.beer_list),

@@ -46,7 +46,7 @@ while user_input != escape:
         while input_ok is False:
             try:
                 file_path = input("Enter a filename (defaults path to current "
-                                  "directory)")
+                                  "directory): ")
                 open(file_path)
                 old_length = len(beer_list.beer_list)
                 beer_list.import_data("test_data")

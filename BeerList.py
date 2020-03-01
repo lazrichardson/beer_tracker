@@ -1,9 +1,19 @@
+"""
+Luther Richardson
+CS521 - February 29th, 2020
+Final Project
+Command line beer tracker
+"""
 import csv
 import Beer
 from operator import attrgetter
 
 
 class BeerList:
+    """
+    This class manipulates a list of Beer objects from the Beer class
+    It includes file import/export, table presentation, and sort algorithms
+    """
 
     def __init__(self, beer_list=None):
         if beer_list is None:

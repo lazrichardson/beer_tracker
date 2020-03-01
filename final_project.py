@@ -3,7 +3,6 @@ Luther Richardson
 CS521 - February 29th, 2020
 Final Project
 Command line beer tracker
-
 """
 import BeerList
 

@@ -1,7 +1,26 @@
+"""
+Luther Richardson
+CS521 - February 29th, 2020
+Final Project
+Command line beer tracker
+"""
 from datetime import date
 
 
 class Beer:  # Requirement: User-defined class.
+    """
+    Creates a container for a beer with key attributes associated with the beer
+
+    Attributes:
+        name (str): name of the beer e.g. Milk Stout
+        rating (int): rating of a beer, 1-5
+        style (str): name of the beer's style e.g. Stout
+        brewer (str): name of the beer's brewer
+        brewer_location (str): location of the beer's brewer
+        input_date (date): date of input
+        star_rating (str): rating represented as stars
+        beer_dict (dict): returns all attributes as dictionary
+    """
 
     def __init__(self, name=None, rating=None, style=None, brewer=None,
                  brewer_location=None):

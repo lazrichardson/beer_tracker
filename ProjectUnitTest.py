@@ -1,10 +1,18 @@
+"""
+Luther Richardson
+CS521 - February 29th, 2020
+Final Project
+Command line beer tracker
+"""
 import Beer
 import BeerList
-import csv
 from datetime import date
 
 
 class ProjectUnitTest:
+    """
+    This class runs unit tests for the BeerList and Beer classes
+    """
     if __name__ == 'main':
 
         # set values for a test beer

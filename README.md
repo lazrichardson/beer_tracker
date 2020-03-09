@@ -1,5 +1,5 @@
 # final_project
-This is my final programming assignment for Python programming at BU
+This is my final programming assignment for Information Structures with Python
 
 ## User Story
 As a user, I would like to keep track of the different beers that I try because I am passionate about craft beer. 

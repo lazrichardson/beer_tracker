@@ -1,0 +1,14 @@
+name,rating,style,brewer,brewer_location,input_date
+Milk Stout,5,Stout,Left hand,Colorado,2020-02-29
+milk stout,5,stout,left hand,colorado,2020-02-29
+Peanut butter bite,5,stout,trillium,boston,2020-02-29
+test_ipa5,5,ipa,luther brew,boston,2020-02-29
+whitbier,4,white beer,weihenstephaner,munich,2020-02-29
+olmsted,4,ipa,trillium,boston,2020-02-29
+test_ipa4,4,ipA,luther brew,boston,2020-02-29
+junos,3,sour,trillium,boston,2020-02-29
+test_ipa3,3,iPa,luther brew,boston,2020-02-29
+test_ipa2,2,Ipa,luther brew,boston,2020-02-29
+daily serving,1,sour,trillium,boston,2020-02-29
+test_ipa1,1,ipa,luther brew,boston,2020-02-29
+test_ipa6,1,IPA,luther brew,boston,2020-02-29
